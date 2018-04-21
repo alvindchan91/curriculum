@@ -4,12 +4,13 @@
  */
 
 const solution = () => {
-  Array.prototype.gsMap = function () {
-    // To get the actual array, use this
-    return [];
+  Array.prototype.gsMap = function(cb, i=0, result=[]) {
+    if(i===this.length) return result;
+    result.push(cb(this[i],i));
+    return this.gsMap(cb, i+1, result);
   };
 };
 
 module.exports = {
-  solution,
+	solution,
 };
